@@ -4,9 +4,10 @@ import { Sparkles, User, LogOut, History, ChevronDown } from 'lucide-react';
 interface NavbarProps {
   userName: string;
   onLogout: () => void;
+  onViewHistory?: () => void;
 }
 
-export default function Navbar({ userName, onLogout }: NavbarProps) {
+export default function Navbar({ userName, onLogout, onViewHistory }: NavbarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
@@ -48,7 +49,13 @@ export default function Navbar({ userName, onLogout }: NavbarProps) {
                   <span className="text-sm">Profile</span>
                 </button>
 
-                <button className="w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3 text-slate-700">
+                <button
+                  onClick={() => {
+                    setIsDropdownOpen(false);
+                    onViewHistory?.();
+                  }}
+                  className="w-full px-4 py-2 text-left hover:bg-slate-50 transition-colors duration-150 flex items-center gap-3 text-slate-700"
+                >
                   <History className="w-4 h-4" />
                   <span className="text-sm">History</span>
                 </button>

@@ -7,9 +7,10 @@ interface UploadPageProps {
   userName: string;
   onUploadComplete: () => void;
   onLogout: () => void;
+  onViewHistory?: () => void;
 }
 
-export default function UploadPage({ userName, onUploadComplete, onLogout }: UploadPageProps) {
+export default function UploadPage({ userName, onUploadComplete, onLogout, onViewHistory }: UploadPageProps) {
   const [resumeFile, setResumeFile] = useState<File | null>(null);
   const [resumeText, setResumeText] = useState('');
   const [githubUrl, setGithubUrl] = useState('');
@@ -54,7 +55,7 @@ export default function UploadPage({ userName, onUploadComplete, onLogout }: Upl
 
   return (
     <div className="min-h-screen">
-      <Navbar userName={userName} onLogout={onLogout} />
+      <Navbar userName={userName} onLogout={onLogout} onViewHistory={onViewHistory} />
 
       <div className="max-w-4xl mx-auto px-4 py-12">
         <div className="text-center mb-12">

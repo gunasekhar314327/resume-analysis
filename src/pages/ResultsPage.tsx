@@ -14,6 +14,7 @@ interface ResultsPageProps {
   onAnalyzeAnother: () => void;
   onComplete: () => void;
   onLogout: () => void;
+  onViewHistory?: () => void;
 }
 
 export default function ResultsPage({
@@ -22,6 +23,7 @@ export default function ResultsPage({
   onAnalyzeAnother,
   onComplete,
   onLogout,
+  onViewHistory,
 }: ResultsPageProps) {
   const getScoreColor = (score: number) => {
     if (score >= 80) return 'text-green-600';
@@ -37,7 +39,7 @@ export default function ResultsPage({
 
   return (
     <div className="min-h-screen">
-      <Navbar userName={userName} onLogout={onLogout} />
+      <Navbar userName={userName} onLogout={onLogout} onViewHistory={onViewHistory} />
 
       <div className="max-w-7xl mx-auto px-4 py-12">
         <div className="text-center mb-8">

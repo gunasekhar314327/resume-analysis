@@ -6,16 +6,18 @@ interface DashboardPageProps {
   userName: string;
   onStartAnalysis: () => void;
   onLogout: () => void;
+  onViewHistory?: () => void;
 }
 
 export default function DashboardPage({
   userName,
   onStartAnalysis,
   onLogout,
+  onViewHistory,
 }: DashboardPageProps) {
   return (
     <div className="min-h-screen">
-      <Navbar userName={userName} onLogout={onLogout} />
+      <Navbar userName={userName} onLogout={onLogout} onViewHistory={onViewHistory} />
 
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center space-y-8">
